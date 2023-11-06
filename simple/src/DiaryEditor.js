@@ -15,6 +15,10 @@ const DiaryEditor = () => {
         });
     };
    
+    const handleSubmit = () => {
+        console.log(state);
+        alert("저장 성공");
+    }
 
     
 
@@ -41,6 +45,9 @@ const DiaryEditor = () => {
                     <option value={5}>5</option>
 
                 </select>
+            </div>
+            <div>
+                <button onClick={handleSubmit}>저장</button>
             </div>
         </div>
 
