@@ -4,8 +4,18 @@ const DiaryEditor = () => {
     const [state, setState] = useState({
         author: " ",
         content: " ",
+        emotion: 1,
 
     });
+
+    const handleChangeState = (e) => {
+        setState({
+            ...state,
+            [e.target.name] : e.target.value,
+        });
+    };
+   
+
     
 
     return (
@@ -14,21 +24,23 @@ const DiaryEditor = () => {
             <div>
                 <input name="author" 
                 value={state.author}
-                onChange={(e)=> {
-                    setState({
-                        author: e.target.value,
-                        content: state.content,
-                    });
-                }}/>
+                onChange={handleChangeState}/>
             </div>
             <div>
-                <textarea value={state.content} onChange={(e)=>{
-                    setState({
-                        content: e.target.value,
-                        author: state.author,
-                    })
-                }}
+                <textarea value={state.content}
+                onChange={handleChangeState}
             />
+            </div>
+            <div>
+                <select name="emotion" value={state.emotion}
+                onChange={handleChangeState}>
+                    <option value={1}>1</option>
+                    <option value={2}>2</option>
+                    <option value={3}>3</option>
+                    <option value={4}>4</option>
+                    <option value={5}>5</option>
+
+                </select>
             </div>
         </div>
 
