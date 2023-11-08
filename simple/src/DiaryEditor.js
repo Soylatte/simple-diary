@@ -1,13 +1,13 @@
 import { useRef,useState} from "react";
 import './App.css';
 
-const DiaryEditor = () => {
+const DiaryEditor = ({onCreate}) => {
     const authorInput = useRef();
     const contentInput = useRef();
 
     const [state, setState] = useState({
-        author: " ",
-        content: " ",
+        author: "",
+        content: "",
         emotion: 1,
 
     });
@@ -30,8 +30,17 @@ const DiaryEditor = () => {
         // focus
         return;
        }
+       onCreate(state.author, state.content, state.emotion);
         alert("저장 성공");
+        setState({
+            author: "",
+            content: "",
+            emotion: 1,
+
+        });
     };
+
+    
 
     
 
@@ -41,14 +50,21 @@ const DiaryEditor = () => {
             <div>
                 <input ref={authorInput} name="author" 
                 value={state.author}
-                onChange={handleChangeState}/>
+                onChange={handleChangeState}
+                placeholder="작성자"
+                type="text"/>
             </div>
             <div>
                 <textarea ref={contentInput}
                 value={state.content}
                 onChange={handleChangeState}
+                name="content"
+                placeholder="일기"
+                type="text"
             />
             </div>
+            <div>
+            
             <div>
                 <select name="emotion" value={state.emotion}
                 onChange={handleChangeState}>
@@ -59,11 +75,14 @@ const DiaryEditor = () => {
                     <option value={5}>5</option>
 
                 </select>
+                </div>
             </div>
             <div>
                 <button onClick={handleSubmit}>저장</button>
             </div>
         </div>
+        
+        
 
     )
 }
