@@ -1,7 +1,7 @@
 import './App.css';
 import DiaryEditor from './DiaryEditor';
 import DiaryList from './DiaryList.js';
-import React,{useState, useEffect} from 'react';
+
 
 const dummyList = [
   {
