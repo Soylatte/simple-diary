@@ -7,6 +7,9 @@ const DiaryItem = ({author,content,created_date,emotion, id}) => {
 
         </div>
         <div className="content">{content}</div>
+        <button onClick={()=> {
+            console.log(id);
+        }}>삭제하기</button>
     </div>
 }
 
