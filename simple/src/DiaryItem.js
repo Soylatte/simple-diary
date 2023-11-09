@@ -1,5 +1,5 @@
 import { useRef,useState } from "react";
-import App from "./App";
+
 
 
 const DiaryItem = ({
@@ -34,19 +34,30 @@ const DiaryItem = ({
         };
 
 
-    return <div className="DiaryItem">
+    return (
+    <div className="DiaryItem">
         <div className="info">
-            <span>작성자 : {author} | 감정점수 : {emotion}</span>
+            <span className="author_info">
+                작성자 : {author} | 감정: {emotion}
+                </span>
             <br />
-            <span className="date">{new Date(created_date).toLocaleString()}</span>
+            <span className="date">
+            {new Date(created_date).toLocaleString()}
+            </span>
 
         </div>
         <div className="content">
-            {isEdit ? <>
-            <textarea value={localContent} ref={localContentInput}
-             onChange={(e) => setLocalContent(e.target.value)}/></>
-             : <>{content}</>}
+            {isEdit ? (
+            <textarea 
+            value={localContent} 
+            ref={localContentInput}
+             onChange={(e) => setLocalContent(e.target.value)}
+             />
+            ): (
+                content
+                )}
         </div>
+       
         {isEdit ? (<>
             <button onClick={handleQuitEdit}>수정 취소</button>
             <button onClick={handleEdit}>수정 완료</button>
@@ -62,6 +73,7 @@ const DiaryItem = ({
             </>)}
         
     </div>
+    );
     
 };
 

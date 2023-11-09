@@ -1,5 +1,5 @@
 import { useRef,useState} from "react";
-import './App.css';
+
 
 const DiaryEditor = ({onCreate}) => {
     const authorInput = useRef();
@@ -15,7 +15,7 @@ const DiaryEditor = ({onCreate}) => {
     const handleChangeState = (e) => {
         setState({
             ...state,
-            [e.target.name] : e.target.value,
+            [e.target.name] : e.target.value
         });
     };
    
@@ -29,7 +29,10 @@ const DiaryEditor = ({onCreate}) => {
         contentInput.current.focus();
         // focus
         return;
-       }
+       };
+
+
+
        onCreate(state.author, state.content, state.emotion);
         alert("저장 성공");
         setState({
@@ -48,7 +51,8 @@ const DiaryEditor = ({onCreate}) => {
         <div className ="DiaryEditor">
             <h2>오늘의 일기</h2>
             <div>
-                <input ref={authorInput} 
+                <input 
+                ref={authorInput} 
                 name="author" 
                 value={state.author}
                 onChange={handleChangeState}
@@ -56,7 +60,8 @@ const DiaryEditor = ({onCreate}) => {
                 type="text"/>
             </div>
             <div>
-                <textarea ref={contentInput}
+                <textarea
+                 ef={contentInput}
                 value={state.content}
                 onChange={handleChangeState}
                 name="content"
@@ -68,7 +73,8 @@ const DiaryEditor = ({onCreate}) => {
             
             <div>
                 <span>오늘의 감정점수:</span>
-                <select name="emotion" value={state.emotion}
+                <select name="emotion"
+                 value={state.emotion}
                 onChange={handleChangeState}>
                     <option value={1}>1</option>
                     <option value={2}>2</option>
@@ -86,6 +92,6 @@ const DiaryEditor = ({onCreate}) => {
         
         
 
-    )
-}
+    );
+};
 export default DiaryEditor;
